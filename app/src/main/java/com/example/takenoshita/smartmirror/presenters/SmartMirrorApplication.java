@@ -14,7 +14,6 @@ public class SmartMirrorApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("test", "test");
         initializeComponent();
     }
 
