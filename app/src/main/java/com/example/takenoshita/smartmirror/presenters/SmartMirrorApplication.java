@@ -18,6 +18,7 @@ public class SmartMirrorApplication extends Application {
     }
 
     private void initializeComponent() {
+
         this.component = DaggerApplicationComponent
                 .builder()
                 .applicationModule(new ApplicationModule(this))
