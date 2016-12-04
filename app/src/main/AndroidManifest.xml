@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.takenoshita.smartmirror">
 
+    <uses-permission android:name="android.permission.CAMERA"/> <!-- カメラへの接続を許可する -->
+
     <application
         android:name=".presenters.SmartMirrorApplication"
         android:allowBackup="true"
