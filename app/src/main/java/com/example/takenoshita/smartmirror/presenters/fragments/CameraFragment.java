@@ -3,6 +3,9 @@ package com.example.takenoshita.smartmirror.presenters.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Surface;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,7 +28,6 @@ public class CameraFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("tet", "test");
     }
 
 
@@ -33,8 +35,15 @@ public class CameraFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_camera, container, false);
+        View rootView =  inflater.inflate(R.layout.fragment_camera, container, false);
+
+        // SurfaceViewの取得
+        SurfaceView surfaceView = (SurfaceView) rootView.findViewById(R.id.surface_view);
+
+        // SurfaceHolderの設定
+        SurfaceHolder holder = surfaceView.getHolder();
+
+       return rootView;
     }
 
 }
