@@ -11,16 +11,17 @@ import android.view.ViewGroup;
 
 import com.example.takenoshita.smartmirror.R;
 import com.example.takenoshita.smartmirror.domain.usecases.CameraUseCase;
+import com.example.takenoshita.smartmirror.presenters.di.components.CameraActivityComponent;
 import com.example.takenoshita.smartmirror.presenters.di.components.MainActivityComponent;
 
 import javax.inject.Inject;
 
-public class CameraFragment extends BaseFragment {
+public class CameraActivityFragment extends BaseFragment {
 
     @Inject
     protected CameraUseCase cameraUseCase;
 
-    public CameraFragment() {
+    public CameraActivityFragment() {
 
     }
 
@@ -34,6 +35,9 @@ public class CameraFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        getActivityComponent(CameraActivityComponent.class).inject(this);
+        cameraUseCase.printStr();
 
         View rootView =  inflater.inflate(R.layout.fragment_camera, container, false);
 

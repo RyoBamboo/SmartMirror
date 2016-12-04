@@ -13,4 +13,6 @@ public interface ActivityComponent {
 
     MainActivityComponent mainActivityComponent();
 
+    CameraActivityComponent cameraActivityComponent();
+
 }

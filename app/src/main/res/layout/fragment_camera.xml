@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.takenoshita.smartmirror.presenters.fragments.CameraFragment">
+    tools:context=".presenters.fragments.CameraActivityFragment">
 
     <SurfaceView
         android:id="@+id/surface_view"
