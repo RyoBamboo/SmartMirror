@@ -1,6 +1,7 @@
 package com.example.takenoshita.smartmirror.presenters.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,13 +25,13 @@ public class CameraFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("tet", "test");
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        //getActivityComponent(MainActivityComponent.class).inject(this);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_camera, container, false);
