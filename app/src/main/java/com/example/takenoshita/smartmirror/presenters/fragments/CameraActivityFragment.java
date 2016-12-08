@@ -37,7 +37,6 @@ public class CameraActivityFragment extends BaseFragment {
                              Bundle savedInstanceState) {
 
         getActivityComponent(CameraActivityComponent.class).inject(this);
-        cameraUseCase.printStr();
 
         View rootView =  inflater.inflate(R.layout.fragment_camera, container, false);
 
@@ -46,8 +45,31 @@ public class CameraActivityFragment extends BaseFragment {
 
         // SurfaceHolderの設定
         SurfaceHolder holder = surfaceView.getHolder();
+        holder.addCallback(surfaceListener);
 
        return rootView;
     }
+
+
+    /*-------------------------------------------------------
+    * Surfaceリスナー
+    *------------------------------------------------------*/
+    private SurfaceHolder.Callback surfaceListener = new SurfaceHolder.Callback() {
+
+        // Surface作成
+        public void surfaceCreated(SurfaceHolder holder) {
+
+        }
+
+        // Surface破棄時
+        public void surfaceDestroyed(SurfaceHolder holder) {
+
+        }
+
+        // Surface変更時
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+        }
+    };
 
 }
