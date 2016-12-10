@@ -74,7 +74,8 @@ public class CameraActivityFragment extends BaseFragment {
 
         // Surface破棄時
         public void surfaceDestroyed(SurfaceHolder holder) {
-
+            camera.release();
+            camera = null;
         }
 
         // Surface変更時
@@ -84,7 +85,7 @@ public class CameraActivityFragment extends BaseFragment {
             camera.setParameters(parameters);
 
             setCameraDisplayOrientation(1, camera);
-            
+
             camera.startPreview();
         }
 
