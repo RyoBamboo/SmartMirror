@@ -4,5 +4,4 @@ import android.util.Log;
 
 public interface CameraUseCase extends UseCase{
 
-    void printStr();
 }

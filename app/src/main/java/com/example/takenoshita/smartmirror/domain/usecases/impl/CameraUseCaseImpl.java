@@ -1,5 +1,6 @@
 package com.example.takenoshita.smartmirror.domain.usecases.impl;
 
+import android.hardware.Camera;
 import android.util.Log;
 
 import com.example.takenoshita.smartmirror.domain.repositories.CameraRepository;
@@ -16,8 +17,13 @@ public class CameraUseCaseImpl implements CameraUseCase{
         this.repository = repository;
     }
 
-    @Override
-    public void printStr() {
-        Log.d("OK", "OK");
+    public void switchCameraMode(Camera camera) {
+
+        camera.stopPreview();
+        camera.release();
+
+
+
     }
+
 }

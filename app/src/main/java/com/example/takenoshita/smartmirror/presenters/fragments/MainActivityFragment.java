@@ -14,8 +14,6 @@ import javax.inject.Inject;
 
 public class MainActivityFragment extends BaseFragment {
 
-    @Inject
-    CameraUseCase cameraUseCase;
 
     public MainActivityFragment() {
         // Required empty public constructor
@@ -29,11 +27,6 @@ public class MainActivityFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        getActivityComponent(MainActivityComponent.class).inject(this);
-        cameraUseCase.printStr();
-
 
         return inflater.inflate(R.layout.fragment_main_activity, container, false);
     }

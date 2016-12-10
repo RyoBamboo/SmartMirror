@@ -1,5 +1,6 @@
 package com.example.takenoshita.smartmirror.presenters.fragments;
 
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,11 @@ public class CameraActivityFragment extends BaseFragment {
 
     @Inject
     protected CameraUseCase cameraUseCase;
+
+    /*--------------------------------------------
+    * メンバー変数
+    *------------------------------------------*/
+    private Camera camera;  // カメラインスタンス
 
     public CameraActivityFragment() {
 
@@ -58,7 +64,12 @@ public class CameraActivityFragment extends BaseFragment {
 
         // Surface作成
         public void surfaceCreated(SurfaceHolder holder) {
-
+            camera = Camera.open(1); // 0で背面カメラ、1で前面カメラ
+            try {
+                camera.setPreviewDisplay(holder);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         // Surface破棄時
@@ -68,8 +79,40 @@ public class CameraActivityFragment extends BaseFragment {
 
         // Surface変更時
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            Camera.Parameters parameters = camera.getParameters();
+            parameters.setPreviewSize(640, 480);
+            camera.setParameters(parameters);
 
+            setCameraDisplayOrientation(1, camera);
+            
+            camera.startPreview();
         }
+
+
+        public void setCameraDisplayOrientation(int cameraId, Camera camera) {
+
+            // カメラ情報の取得
+            Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+            Camera.getCameraInfo(cameraId, cameraInfo);
+
+            // ディスプレイの向きを取得
+            int rotation = getActivity().getWindowManager().getDefaultDisplay().getRotation();
+            int degrees = 0;
+            switch (rotation) {
+                case Surface.ROTATION_0: degrees = 0; break;
+                case Surface.ROTATION_90: degrees = 90; break;
+                case Surface.ROTATION_180: degrees = 180; break;
+                case Surface.ROTATION_270: degrees = 270; break;
+            }
+
+            int result;
+            result = (cameraInfo.orientation + degrees) % 360;
+            result = (360 - result) % 360;
+
+            camera.setDisplayOrientation(result);
+        }
+
+
     };
 
 }
